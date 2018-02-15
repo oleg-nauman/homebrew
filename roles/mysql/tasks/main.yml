@@ -1,0 +1,30 @@
+---
+
+- name: Install MySQL
+  apt: name={{ item }} state=present
+  with_items:
+   - mysql-server
+   - python-mysqldb
+
+- name: Update default MySQL config
+  lineinfile:
+    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+    regexp: 'bind-address(.)+'
+    line: "bind-address={{ groups['database'][0] }}"
+  notify:
+    - restart mysql
+
+
+- name: Create mysql database
+  mysql_db:
+   name={{ hostvars[groups['database'][0]]['wp_mysql_db'] }}
+   state=present
+   login_user=root
+
+- name: Create mysql user
+  mysql_user: 
+    name={{ hostvars[groups['database'][0]]['wp_mysql_user'] }} 
+    password={{ hostvars[groups['database'][0]]['wp_mysql_password'] }} 
+    priv=*.*:ALL
+    host={{ groups['frontend'][0] }}
+    login_user=root
