@@ -1,0 +1,15 @@
+[database]
+10.195.184.50
+
+[frontend]
+10.195.184.49
+
+[backend]
+192.168.0.50
+
+[database:vars]
+wp_mysql_db=wordpress
+wp_mysql_user=wordpre
+wp_mysql_password=trust_me_it_is_secure
+
+
