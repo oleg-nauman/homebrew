@@ -11,5 +11,10 @@
 wp_mysql_db=wordpress
 wp_mysql_user=wordpre
 wp_mysql_password=trust_me_it_is_secure
+wp_title=Title
+wp_admin_username=admin
+wp_admin_email=test@example.com
+wp_admin_password=my_greatest_password
+
 
 

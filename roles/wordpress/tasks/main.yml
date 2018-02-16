@@ -40,3 +40,12 @@
    - {'regexp': "define\\('DB_NAME', '(.)+'\\);", 'line': "define('DB_NAME', '{{ hostvars[groups['database'][0]]['wp_mysql_db'] }}');"}
    - {'regexp': "define\\('DB_USER', '(.)+'\\);", 'line': "define('DB_USER', '{{ hostvars[groups['database'][0]]['wp_mysql_user'] }}');"}
    - {'regexp': "define\\('DB_PASSWORD', '(.)+'\\);", 'line': "define('DB_PASSWORD', '{{ hostvars[groups['database'][0]]['wp_mysql_password'] }}');"}
+
+- name: Initialize Wordpress
+  uri:
+   url: "http://{{ groups['backend'][0] }}/wp-admin/install.php?step=2"
+   method: POST
+   body: "weblog_title={{ hostvars[groups['database'][0]]['wp_title'] }}&user_name={{ hostvars[groups['database'][0]]['wp_admin_username'] }}&admin_email={{ hostvars[groups['database'][0]]['wp_admin_email'] }}&admin_password={{ hostvars[groups['database'][0]]['wp_admin_password'] }}&admin_password2={{ hostvars[groups['database'][0]]['wp_admin_password'] }}&pw_weak=1"
+   headers:
+    Content-Type: "application/x-www-form-urlencoded"
+
