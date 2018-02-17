@@ -11,7 +11,8 @@
    - nginx
 
 - hosts: backend
-
+  vars_files:
+   - vars_wordpress.yaml
   roles:
    - server
    - wordpress

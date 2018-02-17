@@ -1,0 +1,22 @@
+---
+# roles:
+# role 0 : subscriber
+# role 1 : contributor
+# role 2 : author
+# role 3-7 : editor
+# role 8-10 : administrator
+
+wp_users:
+ user1:
+  login: user1
+  name: John Smith
+  password: password1
+  email: test1@example.com
+  role: 3
+ user2:
+  login: user2
+  name: Donald Duck
+  password: password2
+  email: test2@example.com
+  role: 2
+

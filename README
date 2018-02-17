@@ -1,7 +1,8 @@
 It is test task related to ansible setup
 
 a ) Wordpress db {name,user,password} variables defined in hosts file directly
-b ) hosts file is the only file which contains variables ( nodes IPs and items from a) )
+b ) hosts file is the file which contains variables ( nodes IPs and items from a) )
+c ) vars_wordpress.yaml file contains all wordpress user ( except initial wordpress admin )
 c ) IP setiings for nginx proxy and wordpress DB host assigned as hostvar variable;
    it means that only single IP host entry for database and backend groups are allowed.
 d ) Command line is: ansible-playbook playbook.yml -i hosts -u $USER
